@@ -13,7 +13,6 @@ const CountryDetails = ({ id, onClose }) => {
     };
     loadDetails();
   }, [id]);
-  console.log(details?.currencies?.currencies);
   return (
     <dialog open className="modal">
       <div className="modal-box">

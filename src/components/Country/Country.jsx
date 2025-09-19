@@ -2,12 +2,19 @@ import { useState } from "react";
 import CountryDetails from "../CountryDetails/CountryDetails";
 
 const Country = ({ country, visitedCountry }) => {
+  console.log(country);
   const [toured, setToured] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
   const handleVisit = () => {
     visitedCountry(country);
+
     setToured(!toured);
+    if (toured) {
+      setToured(toured);
+      return alert(`You've already ${country.name.common}`);
+    }
+    alert(`${country.name.common} is added to your visited country lists`);
   };
 
   const handleDetails = (id) => {
@@ -20,7 +27,6 @@ const Country = ({ country, visitedCountry }) => {
           className="mx-auto rounded-xl h-[170px] w-full"
           src={country.flags.flags.png}
           alt={country.flags.flags.alt}
-          //   height={200}
         />
         <p className="text-lg font-medium"> Name: {country.name.common}</p>
         <p>Area: {country.area.area}</p>
