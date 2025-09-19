@@ -2,13 +2,11 @@ import { useState } from "react";
 import CountryDetails from "../CountryDetails/CountryDetails";
 
 const Country = ({ country, visitedCountry }) => {
-  console.log(country);
   const [toured, setToured] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
   const handleVisit = () => {
     visitedCountry(country);
-
     setToured(!toured);
     if (toured) {
       setToured(toured);

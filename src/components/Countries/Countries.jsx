@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Country from "../Country/Country";
+import VisitedCountries from "../VisitedCountries/VisitedCountries";
 
 const Countries = ({ countries }) => {
   const [visited, setVisited] = useState([]);
@@ -18,6 +19,8 @@ const Countries = ({ countries }) => {
     }
   };
 
+  // console.log(visited);
+
   const filteredCountries = countries.filter((country) =>
     country.name.common.toLowerCase().includes(search.toLowerCase())
   );
@@ -33,18 +36,23 @@ const Countries = ({ countries }) => {
         </h4>
       </div>
       <div className="text-center my-8">
+        <div className="flex gap-5 flex-wrap">
+          {visited.map((visit) => (
+            <VisitedCountries key={visit.ccn3.ccn3} visit={visit} />
+          ))}
+        </div>
         {/* <form action=""> */}
         <input
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-          className="px-3 py-4 border-none outline-none text-black w-[300px] rounded-l-2xl shadow-xl bg-slate-200"
+          className="px-3 py-4 border-none outline-none text-black w-[300px] rounded-2xl shadow-xl bg-slate-200"
           type="text"
           placeholder="Search Country"
         />
-        <button className="px-5 py-4 border border-black text-black bg-slate-200 font-medium  cursor-pointer  rounded-r-2xl shadow-xl ">
+        {/* <button className="px-5 py-4 border border-black text-black bg-slate-200 font-medium  cursor-pointer  rounded-r-2xl shadow-xl ">
           Search
-        </button>
+        </button> */}
         {/* </form> */}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch mt-5">
